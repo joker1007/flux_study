@@ -3,7 +3,7 @@ var className = require("classname");
 
 var TodoActions = require("../actions/todo_actions");
 
-var TodoItemInput = require("./todo_item_input");
+var TodoItemInput = require("./todo_item_input.jsx");
 
 var TodoItem = React.createClass({
   propTypes: {

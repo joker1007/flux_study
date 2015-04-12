@@ -1,7 +1,7 @@
 var React = require("react");
 
-var TodoItem = require("./todo_item");
-var NewTodoInput = require("./new_todo_input");
+var TodoItem = require("./todo_item.jsx");
+var NewTodoInput = require("./new_todo_input.jsx");
 var TodoStore = require("../stores/todo_store");
 
 function getTodoState() {
