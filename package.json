@@ -1,0 +1,16 @@
+{
+  "name": "seirenes",
+  "version": "0.0.0",
+  "description": "== README",
+  "main": "index.js",
+  "dependencies": {
+    "babelify": "^6.0.2",
+    "browserify": "^9.0.8",
+    "classname": "0.0.0",
+    "flux": "^2.0.1",
+    "lodash": "^3.6.0",
+    "react": "^0.13.1"
+  },
+  "author": "joker1007",
+  "license": "ISC"
+}
