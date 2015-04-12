@@ -9,6 +9,7 @@
     "classname": "0.0.0",
     "flux": "^2.0.1",
     "lodash": "^3.6.0",
+    "minifyify": "^6.4.0",
     "react": "^0.13.1"
   },
   "author": "joker1007",

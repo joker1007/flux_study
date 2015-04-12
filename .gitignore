@@ -68,3 +68,4 @@ build/Release
 node_modules
 
 /public/bundle.js
+/public/bundle.map
