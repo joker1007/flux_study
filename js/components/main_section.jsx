@@ -1,46 +1,44 @@
-var React = require("react");
+import React from "react";
+import _ from "lodash";
 
-var TodoItem = require("./todo_item.jsx");
-var NewTodoInput = require("./new_todo_input.jsx");
-var TodoStore = require("../stores/todo_store");
+import TodoItem from "./todo_item.jsx";
+import NewTodoInput from "./new_todo_input.jsx";
+import TodoStore from "../stores/todo_store";
+
+import FluxMixin from "flummox/mixin";
 
 function getTodoState() {
   return {todos: TodoStore.getAll()};
 }
 
 var MainSection = React.createClass({
-  getInitialState: function() {
-    return getTodoState();
-  },
+  mixins: [FluxMixin({
+    todo: store => ({
+      todos: store.getAll(),
+    })
+  })],
 
   componentDidMount: function() {
     console.log("mount");
-    TodoStore.addChangeListener(this._onUpdate);
   },
 
   componentWillUnmound: function() {
     console.log("unmount");
-    TodoStore.removeChangeListener(this._onUpdate);
   },
 
   render: function() {
-    let todoItems = this.state.todos.map((t) => {
-      return <TodoItem key={t.id} todo={t} />
+    let todoItems = _.map(this.state.todos, (t) => {
+      return <TodoItem flux={this.flux} key={t.id} todo={t} />
     });
 
     return (
       <div>
-        <NewTodoInput />
+        <NewTodoInput flux={this.flux} />
         <ul className="todos">
           {todoItems}
         </ul>
       </div>
     );
-  },
-
-  _onUpdate: function() {
-    console.log("state update");
-    this.setState(getTodoState());
   },
 });
 

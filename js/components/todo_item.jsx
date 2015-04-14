@@ -1,8 +1,6 @@
 var React = require("react/addons");
 var className = require("classname");
 
-var TodoActions = require("../actions/todo_actions");
-
 var TodoItemInput = require("./todo_item_input.jsx");
 
 var TodoItem = React.createClass({
@@ -15,8 +13,8 @@ var TodoItem = React.createClass({
   },
 
   render: function() {
-    let todo = this.props.todo;
-    let id = `todo-${this.props.todo.id}`
+    let {todo} = this.props;
+    let id = `todo-${todo.id}`
     let input;
     let todoClasses = className({
       editing: this.state.isEditing,
@@ -27,6 +25,7 @@ var TodoItem = React.createClass({
       input = <TodoItemInput
         value={todo.text}
         onSave={this._save}
+        ref="edit"
       />
     }
 
@@ -47,17 +46,19 @@ var TodoItem = React.createClass({
 
   _save: function(text) {
     let todo = this.props.todo;
-    TodoActions.updateText(todo.id, text);
+    this.props.flux.getActions("todo").updateText(todo.id, text);
     this.setState({isEditing: false});
   },
 
   _destroy: function() {
-    TodoActions.destroy(this.props.todo.id);
+    this.props.flux.getActions("todo").destroy(this.props.todo.id);
   },
 
   _onDeleteClick: function(e) {
     e.preventDefault();
-    this._destroy();
+    if (confirm("Delete?")) {
+      this._destroy();
+    };
   },
 
   _onDoubleClick: function() {
@@ -65,7 +66,7 @@ var TodoItem = React.createClass({
   },
 
   _onToggleComplete: function() {
-    TodoActions.toggleComplete(this.props.todo.id);
+    this.props.flux.getActions("todo").toggleComplete(this.props.todo.id);
   },
 });
 

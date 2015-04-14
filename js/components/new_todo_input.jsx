@@ -1,7 +1,5 @@
 var React = require("react");
 
-var TodoActions = require("../actions/todo_actions");
-
 var NewTodoInput = React.createClass({
   getInitialState: function() {
     return {value: ""};
@@ -24,7 +22,7 @@ var NewTodoInput = React.createClass({
   },
 
   _save: function() {
-    TodoActions.create(this.state.value);
+    this.props.flux.getActions("todo").create(this.state.value);
     this.setState({value: ""});
   },
 });

@@ -4,9 +4,11 @@
   "description": "== README",
   "main": "index.js",
   "dependencies": {
+    "babel": "^5.1.8",
     "babelify": "^6.0.2",
     "browserify": "^9.0.8",
     "classname": "0.0.0",
+    "flummox": "^3.5.2",
     "flux": "^2.0.1",
     "lodash": "^3.6.0",
     "minifyify": "^6.4.0",

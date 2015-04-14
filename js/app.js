@@ -1,10 +1,14 @@
-var React = require("react");
+require("babel/polyfill");
 
-var TodoApp = require('./components/todo_app.jsx');
+import React from "react";
+import Flux from "./flux";
+import TodoApp from "./components/todo_app.jsx";
+
+var flux = new Flux();
 
 window.addEventListener("DOMContentLoaded", () => {
   React.render(
-    <TodoApp />,
+    <TodoApp flux={flux} />,
     document.getElementById('main')
   );
 });

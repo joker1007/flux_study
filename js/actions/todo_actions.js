@@ -1,33 +1,20 @@
-var AppDispatcher = require("../dispatchers/app_dispatcher");
+import {Actions} from "flummox";
 
-var TodoActions = {
-  updateText: function(id, text) {
-    AppDispatcher.dispatch({
-      actionType: "update",
-      id: id,
-      text: text,
-    });
-  },
+export default class TodoActions extends Actions {
+  updateText(id, text) {
+    return {id: id, text: text};
+  }
 
-  toggleComplete: function(id) {
-    AppDispatcher.dispatch({
-      actionType: "toggleComplete",
-      id: id,
-    });
-  },
+  toggleComplete(id) {
+    return id
+  }
 
-  create: function (text) {
-    AppDispatcher.dispatch({
-      actionType: "create",
-      text: text,
-    });
-  },
+  create(text) {
+    return text;
+  }
 
-  destroy: function (id) {
-    AppDispatcher.dispatch({
-      actionType: "destroy",
-      id: id,
-    });
+  destroy(id) {
+    return id;
   }
 }
 
